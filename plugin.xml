@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
+        id="com.mantra.mfs100"
+        version="0.7.0">
+
+  <name>MFS100Sample</name>
+
+  <engines>
+    <engine name="cordova" version=">=3.4.0"/>
+  </engines>
+
+  <asset src="www/mfs100sample.js" target="js/mfs100sample.js"/>
+
+  <js-module src="www/mfs100sample.js" name="mfs100sample">
+    <clobbers target="mfs100sample" />
+  </js-module>
+
+  <platform name="android">
+  <config-file target="AndroidManifest.xml" parent="/manifest">
+        <uses-permission android:name="android.permission.INTERNET"/>
+		<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+		<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    </config-file>
+
+    <config-file target="res/xml/config.xml" parent="/*">
+      <feature name="MFS100Sample">
+        <param name="android-package" value="com.mantra.plugin.MFS100Sample"/>
+      </feature>	  
+    </config-file>
+
+    <source-file src="src/android/MFS100Sample.java" target-dir="src/com/mantra/plugin/"/>
+    
+    <source-file src="src/android/libs/armeabi/libMFS100V9024.so" target-dir="libs/armeabi/" />
+    <source-file src="src/android/libs/armeabi-v7a/libMFS100V9024.so" target-dir="libs/armeabi-v7a/" />
+    <source-file src="src/android/libs/mips/libMFS100V9024.so" target-dir="libs/mips/" />
+    <source-file src="src/android/libs/x86/libMFS100V9024.so" target-dir="libs/x86/" />
+    <source-file src="src/android/libs/mantra.mfs100.jar" target-dir="libs" />
+  </platform>
+  
+</plugin>
